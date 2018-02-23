@@ -12,7 +12,7 @@ This is a demo project how to build a nodejs based web automation test
 
 `npm test` - jasmine test
 
-`nmp cucumber` - cucumber test
+`nmp run-script cucumber` - cucumber test
 
 # Tips
 
