@@ -1,40 +1,18 @@
-const outputDir = 'reports/cucumber';
+'use strict';
+let env = require('./environment.js');
 
-exports.config = {
-    //seleniumAddress: 'http://localhost:4444/wd/hub',
-    specs: ['src/specs/*.js'],
-
-    allScriptsTimeout: 500000,
+exports.config = Object.assign({}, env, {
     framework: 'custom',
     frameworkPath: require.resolve('protractor-cucumber-framework'),
-
-    multiCapabilities: [{
-            browserName: 'chrome',
-            chromeOptions: {
-                args: ['disable-infobars']
-            },
-            //Metadata to be displayed in the cucumber html report
-            metadata: {
-                browser: {
-                    name: 'chrome',
-                    version: '63'
-                },
-                device: 'PC',
-                platform: {
-                    name: 'Windows',
-                    version: '10'
-                }
-            }
-        },],
-
     specs: [
-        'src/specs/cucumber/*.feature'
+        'features/*.feature'
     ],
 
     cucumberOpts: {
-        require: ['./src/specs/cucumber/step_definitions/**/*.js'],
+        require: ['features/support/step_definitions/**/*.js'],
         tags: [],
-        format: 'json:reports/cucumber/results.json',
+        format: 'json:reports/results.json',
+        ignoreUncaughtExceptions: true
     },
 
     plugins: [{
@@ -43,7 +21,8 @@ exports.config = {
                     automaticallyGenerateReport: true,
                     removeExistingJsonReportFile: true,
                     removeOriginalJsonReportFile: true,
-                    jsonOutputPath: outputDir,
+                    jsonOutputPath: global.CONTEXT.outputDir,
+                    reportPath: global.CONTEXT.outputDir,
                     openReportInBrowser: true,
                     customData: {
                                         title: 'Run info',
@@ -56,14 +35,5 @@ exports.config = {
                                     }
                 },
             }],
+});
 
-    beforeLaunch: function () {
-        var path = require('path');
-        let reportsPath = path.join(__dirname, outputDir);
-        var mkdirp = require('mkdirp');
-        mkdirp(reportsPath, function (err) {
-            if (err) console.error(err);
-            else console.log('Directory for test reports is created: ' + reportsPath);
-        });
-    },
-};
