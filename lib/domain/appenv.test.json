@@ -1,3 +1,5 @@
 {
-  "baseUrl": "https://angularjs.org"
+  "host": "https://angularjs.org",
+  "username": "someone",
+  "password":"something"
 }

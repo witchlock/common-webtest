@@ -10,9 +10,11 @@ This is a demo project how to build a nodejs based web automation test
 
 # Test
 
-`npm test` - jasmine test
+`nmp test` - cucumber test
 
-`nmp run-script cucumber` - cucumber test
+# Report
+
+`reports/index.html`
 
 # Tips
 

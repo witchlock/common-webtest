@@ -1,22 +1,20 @@
-var chai = require('chai');
-var chaiAsPromised = require('chai-as-promised');
-chai.use(chaiAsPromised);
-var expect = chai.expect;
+'use strict';
 
-var {Given,Then, When} = require('cucumber');
-const env = CONTEXT.env;
+let homePage = global.Pages.HomePage;
 
-var homePage = require('../../../lib/pages/home.js');
-var utils = require('../../../lib/utils.js');
-
-Given('a wonderful monday', function () {
-    return browser.get(env.baseUrl);
+Given(/^a wonderful monday$/, function () {
+    homePage.open();
+    return homePage.addNewTodo("A new day");
 });
 
-When('I start in the morning', function (done) {
- done();
+When(/^I start in the morning$/, function () {
+    let todoList = homePage.getTodoList();
+    return expect(todoList.count()).to.eventually.equal(3);
 });
 
-Then('I should cheer up', function (done) {
-     done();
+Then(/^I should cheer up$/, function () {
+    homePage.completeTask(2);
+    let completed = homePage.getTasksCompleted();
+    return expect(completed.count()).to.eventually.equal(2);
 });
+
