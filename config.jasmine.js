@@ -15,8 +15,6 @@ exports.config = {
         isVerbose: true,
         showColors: true,
         defaultTimeoutInterval: 50000,
-        print: function () {
-        } //remove protractor dot report;
     },
 
     onPrepare: function () {
