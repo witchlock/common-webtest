@@ -11,5 +11,5 @@ When('I start in the morning', function (callback) {
 });
 
 Then('I should cheer up', function (callback) {
-    callback(null, 'pending');
+    callback();
 });

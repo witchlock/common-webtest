@@ -23,6 +23,7 @@
     "protractor": "^5.3.0"
   },
   "devDependencies": {
-    "protractor-cucumber-framework": "^4.2.0"
+    "protractor-cucumber-framework": "^4.2.0",
+    "protractor-multiple-cucumber-html-reporter-plugin": "^1.4.0"
   }
 }
