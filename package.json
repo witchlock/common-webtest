@@ -1,0 +1,21 @@
+{
+  "name": "common-webtest",
+  "version": "1.0.0",
+  "description": "demo of general web ui test",
+  "main": "index.js",
+  "scripts": {
+    "install": "node ./node_modules/protractor/bin/webdriver-manager update --standalone",
+    "test": "node ./node_modules/protractor/bin/protractor config.jasmine.js",
+    "cucumber": "node ./node_modules/protractor/bin/protractor config.cucumber.js"
+  },
+  "author": "Xiang Ke",
+  "license": "ISC",
+  "keywords": [
+    "test",
+    "webui",
+    "automation"
+  ],
+  "dependencies": {
+    "protractor": "^5.3.0"
+  }
+}
